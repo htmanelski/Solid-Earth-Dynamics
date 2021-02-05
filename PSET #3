@@ -1,0 +1,21 @@
+import matplotlib.pyplot as plt
+import numpy as np 
+import math
+from scipy import stats
+
+T_0=20
+omega = 1.9921*10**(-7)
+k=10**(-6)
+z=16.79
+t = np.linspace(0,31536000,10000)
+
+
+T = T_0*np.e**(-np.sqrt(omega/(2*k))*z)*np.sin(omega*t-(omega*z)/(2*k))
+
+print("The amplitude at z = " + str(z) + " is " + str(stats.describe(T)[1][1]))
+
+plt.plot(t,T)
+plt.xlabel('Time (seconds)')
+plt.ylabel('Temperature (C)')
+plt.title('Temperature vs Time throughout the year')
+plt.show()
